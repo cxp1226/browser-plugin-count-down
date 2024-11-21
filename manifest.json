@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "倒计时",
+  "version": "1.0",
+  "description": "简单的倒计时工具",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "fluent-emoji-flat--alarm-clock.png"
+  },
+  "icons": {
+    "16": "fluent-emoji-flat--alarm-clock.png",
+    "32": "fluent-emoji-flat--alarm-clock.png",
+    "48": "fluent-emoji-flat--alarm-clock.png",
+    "128": "fluent-emoji-flat--alarm-clock.png"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+} 
