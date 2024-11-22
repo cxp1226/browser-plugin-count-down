@@ -27,7 +27,8 @@
       margin: 12px 0;
     }
     input {
-      width: 60px;
+      flex: 1;
+      min-width: 0;
       padding: 6px 8px;
       border: 2px solid #e0e0e0;
       border-radius: 6px;
@@ -40,7 +41,6 @@
     }
     button {
       padding: 6px 12px;
-      background: #2196F3;
       color: white;
       border: none;
       border-radius: 6px;
@@ -49,11 +49,30 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    button:hover {
+    #startTimer {
+      background: #2196F3;
+    }
+    #startTimer:hover {
       background: #1976D2;
     }
-    button:active {
+    #startTimer:active {
       background: #1565C0;
+    }
+    #clearTimer {
+      background: #f44336;
+    }
+    #clearTimer:hover {
+      background: #d32f2f;
+    }
+    #clearTimer:active {
+      background: #c62828;
+    }
+    .clear-group {
+      margin-top: 8px;
+    }
+    
+    .clear-group button {
+      width: 100%;  /* 让清空按钮占满整行 */
     }
   </style>
 </head>
@@ -62,6 +81,9 @@
   <div class="input-group">
     <input type="number" id="minutes" placeholder="分钟" value="1" min="1">
     <button id="startTimer">开始</button>
+  </div>
+  <div class="clear-group">
+    <button id="clearTimer">重置</button>
   </div>
   <script src="popup.js"></script>
 </body>

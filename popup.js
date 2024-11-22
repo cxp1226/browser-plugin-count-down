@@ -50,4 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
       startTimer(minutes);
     }
   });
+
+  // 监听重置按钮点击
+  document.getElementById('clearTimer').addEventListener('click', () => {
+    // 清除定时器
+    clearInterval(countdown);
+    // 重置剩余时间
+    remainingTime = 0;
+    // 清除存储的结束时间
+    chrome.storage.local.remove(['endTime'], () => {
+      // 重置显示的时间为 00:00
+      document.getElementById('timer').textContent = '00:00';
+      // 重置输入框为默认值 1
+      document.getElementById('minutes').value = '1';
+    });
+  });
 }); 

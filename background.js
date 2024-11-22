@@ -1,10 +1,10 @@
 let countdown;
 
-// 更新图标上的倒计时文字
-function updateBadge(minutes, seconds) {
-  const text = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  chrome.action.setBadgeText({ text: minutes > 0 || seconds > 0 ? text : '' });
-  chrome.action.setBadgeBackgroundColor({ color: '#4688F1' });
+// 更新图标上显示的时间
+function updateBadgeText(timeString) {
+  chrome.action.setBadgeText({ text: timeString });
+  chrome.action.setBadgeTextColor({ color: '#FFFFFF' });  // 设置文字颜色为白色
+  chrome.action.setBadgeBackgroundColor({ color: '#2196F3' });  // 设置背景色为蓝色
 }
 
 // 显示通知
@@ -27,13 +27,15 @@ function checkAndUpdateTimer() {
         const remainingSeconds = Math.floor((result.endTime - now) / 1000);
         const minutes = Math.floor(remainingSeconds / 60);
         const seconds = remainingSeconds % 60;
-        updateBadge(minutes, seconds);
+        updateBadgeText(`${minutes}:${seconds.toString().padStart(2, '0')}`);
       } else {
-        updateBadge(0, 0);
+        updateBadgeText('');
         chrome.storage.local.remove(['endTime']);
         // 时间到时显示通知
         showNotification();
       }
+    } else {
+      updateBadgeText('');
     }
   });
 }
