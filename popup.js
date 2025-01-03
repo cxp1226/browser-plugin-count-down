@@ -46,7 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutes = parseInt(document.getElementById('minutes').value);
     if (minutes > 0) {
       const endTime = Date.now() + minutes * 60 * 1000;
-      chrome.storage.local.set({ endTime: endTime });
+      chrome.storage.local.set({ endTime: endTime }, () => {
+        // 在设置完存储后关闭弹窗
+        window.close();
+      });
       startTimer(minutes);
     }
   });
